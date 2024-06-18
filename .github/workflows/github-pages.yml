@@ -14,8 +14,7 @@ jobs:
       - name: Build
         #   Шаги сборки
         run: |
-          mkdir dist
-          cp -R src/* dist
+          npm run build
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
