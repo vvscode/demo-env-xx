@@ -1,0 +1,20 @@
+{
+  "name": "demo-env-xx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvscode/demo-env-xx.git"
+  },
+  "keywords": [],
+  "author": "Vasil Vanchuk <v.vanchuk@tinkoff.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vvscode/demo-env-xx/issues"
+  },
+  "homepage": "https://github.com/vvscode/demo-env-xx#readme"
+}
