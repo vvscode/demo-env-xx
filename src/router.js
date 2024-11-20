@@ -63,9 +63,9 @@ const createRender =
 const router = Router();
 
 router.on(/.*/, createRender("/.*"));
-router.on((path) => path === "/contacts", createRender("/contacts"));
-router.on("/about", createRender("/about"));
-router.on("/about/us", createRender("/about/us"));
+router.on((path) => path === `${BASENAME}/contacts`, createRender("/contacts"));
+router.on(`${BASENAME}/about`, createRender("/about"));
+router.on(`${BASENAME}/about/us`, createRender("/about/us"));
 
 document.body.addEventListener("click", (event) => {
   if (!event.target.matches("a")) {

@@ -1,5 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
+
+const BASENAME = `/${(process.env.GITHUB_REPOSITORY || '').split('/').pop()}`;
 
 module.exports = {
   entry: './src/index.js',
@@ -13,11 +16,14 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: `/${(process.env.GITHUB_REPOSITORY || '').split('/').pop()}`,
+    publicPath: BASENAME,
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+    }),
+    new webpack.DefinePlugin({
+      BASENAME: JSON.stringify(BASENAME),
     }),
   ],
   module: {
