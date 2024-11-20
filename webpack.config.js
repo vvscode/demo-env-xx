@@ -7,12 +7,13 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'public'),
     },
+    historyApiFallback: true,
     port: 9000,
   },
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: process.env.GITHUB_REPOSITORY.split('/').pop(),
+    publicPath: `/${(process.env.GITHUB_REPOSITORY || '').split('/').pop()}`,
   },
   plugins: [
     new HtmlWebpackPlugin({
