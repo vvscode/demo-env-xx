@@ -12,7 +12,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/demo-env-xx/',
+    publicPath: process.env.GITHUB_REPOSITORY.split('/').pop(),
   },
   plugins: [
     new HtmlWebpackPlugin({
