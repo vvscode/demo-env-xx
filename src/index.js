@@ -13,3 +13,6 @@ header.innerHTML = `
 `;
 
 document.body.prepend(header);
+
+/* global BASENAME */
+console.log({ BASENAME });
