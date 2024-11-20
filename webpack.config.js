@@ -21,6 +21,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/index.html',
+      filename: 'index.html',
     }),
     new webpack.DefinePlugin({
       BASENAME: JSON.stringify(BASENAME),
