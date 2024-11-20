@@ -1,15 +1,22 @@
 /* eslint-disable */
 
 // IMPLEMENTATION
-function Router() {
+function Router(basename = "") {
   let listeners = [];
   let currentPath = location.pathname;
   let previousPath = null;
 
-  const isMatch = (match, path) =>
-    (match instanceof RegExp && match.test(path)) ||
-    (typeof match === "function" && match(path)) ||
-    (typeof match === "string" && match === path);
+  const isMatch = (match, path) => {
+    path = path.replace(new RegExp(`^${basename}`), "");
+
+    console.log({ path });
+
+    return (
+      (match instanceof RegExp && match.test(path)) ||
+      (typeof match === "function" && match(path)) ||
+      (typeof match === "string" && match === path)
+    );
+  };
 
   const handleListener = ({ match, onEnter }) => {
     const args = { currentPath, previousPath, state: history.state };
@@ -60,12 +67,12 @@ const createRender =
     document.getElementById("root").innerHTML = `<h2>${content}</h2>`;
   };
 
-const router = Router();
+const router = Router(BASENAME);
 
 router.on(/.*/, createRender("/.*"));
-router.on((path) => path === `${BASENAME}/contacts`, createRender("/contacts"));
-router.on(`${BASENAME}/about`, createRender("/about"));
-router.on(`${BASENAME}/about/us`, createRender("/about/us"));
+router.on((path) => path === `/contacts`, createRender("/contacts"));
+router.on(`/about`, createRender("/about"));
+router.on(`/about/us`, createRender("/about/us"));
 
 document.body.addEventListener("click", (event) => {
   if (!event.target.matches("a")) {
