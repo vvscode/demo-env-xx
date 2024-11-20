@@ -1,3 +1,18 @@
-import { sum } from './sum.js';
+import { router } from './router';
+import './styles.css';
 
-document.querySelector('.app').innerHTML = `<h1>Env XX</h1><h2>${sum(19, 23)}</h2>`;
+const header = document.createElement('header');
+header.innerHTML = `
+      <h1>Client-side URL change examples</h1>
+      <nav style="display: flex; justify-content: space-around">
+        <a href="${router.makeUrl('/')}">Home</a>
+        <a href="${router.makeUrl('/contacts')}">Contacts</a>
+        <a href="${router.makeUrl('/about')}">About</a>
+        <a href="${router.makeUrl('/about/us')}">About / Us</a>
+      </nav>
+`;
+
+document.body.prepend(header);
+
+/* global BASENAME */
+console.log({ BASENAME });
