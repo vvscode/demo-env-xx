@@ -56,7 +56,11 @@ function Router(basename = "") {
 
   window.addEventListener("popstate", handleAllListeners);
 
-  return { on, go };
+  const makeUrl = (path) => {
+    return `${basename}${path}`;
+  };
+
+  return { on, go, makeUrl };
 }
 
 // USAGE
@@ -67,7 +71,7 @@ const createRender =
     document.getElementById("root").innerHTML = `<h2>${content}</h2>`;
   };
 
-const router = Router(BASENAME);
+export const router = Router(BASENAME);
 
 router.on(/.*/, createRender("/.*"));
 router.on((path) => path === `/contacts`, createRender("/contacts"));
